@@ -1,7 +1,7 @@
 ---
 title: Hello world!
 date: 2025-10-10
-tags: [blog]
+tags: [homelabbing]
 summary: Hopefully the first of many posts.
 ---
 
