@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "hello_world",
+    "href": "hello_world.md",
+    "title": "Hello world!",
+    "summary": "Hopefully the first of many posts.",
+    "date": "2025-10-10",
+    "tags": [
+      "blog"
+    ]
+  }
+]

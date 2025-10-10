@@ -1,0 +1,89 @@
+name: Build & Publish static site to gh-pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write  # needed for pushing to gh-pages
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Build the JSON indexes (but we won't publish the script itself)
+      - name: Build blog/projects indexes
+        run: |
+          if [ -f scripts/build_index.py ]; then
+            python scripts/build_index.py
+          else
+            echo "scripts/build_index.py not found; skipping index build"
+          fi
+
+      - name: Prepare dist folder (only necessary files)
+        run: |
+          set -e
+          rm -rf dist
+          mkdir -p dist
+          # Required root files
+          cp -v index.html dist/
+          # Optional common assets if you have them
+          if [ -d assets ]; then cp -rv assets dist/; fi
+          if [ -d images ]; then cp -rv images dist/; fi
+
+          # Blog (posts + images + the generated index.json)
+          if [ -d blog ]; then
+            mkdir -p dist/blog
+            # Copy everything except unwanted files
+            rsync -a blog/ dist/blog/ \
+              --exclude 'index.html' \
+              --exclude '*.py' \
+              --exclude 'scripts/' \
+              --exclude 'README*' \
+              --exclude '.DS_Store'
+            # Ensure index.json exists even if empty
+            if [ ! -f dist/blog/index.json ]; then echo "[]" > dist/blog/index.json; fi
+          fi
+
+          # Projects (html entries + images + the generated index.json)
+          if [ -d projects ]; then
+            mkdir -p dist/projects
+            rsync -a projects/ dist/projects/ \
+              --exclude 'index.html' \
+              --exclude '*.py' \
+              --exclude 'scripts/' \
+              --exclude 'README*' \
+              --exclude '.DS_Store'
+            if [ ! -f dist/projects/index.json ]; then echo "[]" > dist/projects/index.json; fi
+          fi
+
+          # Prevent Jekyll from processing (keeps folders like /assets/_* intact)
+          touch dist/.nojekyll
+
+          # Final safety sweep: remove any .py or script leftovers (defense in depth)
+          find dist -name '*.py' -delete || true
+          rm -rf dist/scripts || true
+          rm -f dist/README dist/README.md || true
+
+      # Publish to gh-pages branch
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: dist
+          force_orphan: true   # creates a clean gh-pages history (nice for pages)
+          enable_jekyll: false # also creates .nojekyll
+
