@@ -1,0 +1,15 @@
+{
+    "name": "carlson-portfolio",
+    "private": true,
+    "scripts": {
+        "build:css:dev": "tailwindcss -i src/tailwind.css -o assets/site.css --minify",
+        "build:css:prod": "tailwindcss -i src/tailwind.css -o dist/assets/site.css --minify",
+        "build": "npm run build:css:prod"
+    },
+    "devDependencies": {
+      "tailwindcss": "^3.4.13",
+      "postcss": "^8.4.47",
+      "autoprefixer": "^10.4.20"
+    }
+  }
+  
