@@ -46,60 +46,44 @@ jobs:
       # Assemble dist
       - name: Prepare dist folder (only necessary files)
         run: |
-          set -euo pipefail
-          rm -rf dist_tmp
-          mkdir -p dist_tmp/assets
+            set -e
+            rm -rf dist
+            mkdir -p dist/assets
+            cp -v index.html dist/
+            # CSS already built
+            if [ -f dist/assets/site.css ]; then
+            cp -v dist/assets/site.css dist/assets/site.css
+            fi
+            if [ -d assets ]; then cp -rv assets/* dist/assets/; fi
+            if [ -d images ]; then cp -rv images dist/images; fi
 
-          # index.html (root)
-          cp -v index.html dist_tmp/
+            # Blog
+            if [ -d blog ]; then
+            mkdir -p dist/blog
+            rsync -a blog/ dist/blog/ \
+                --exclude 'index.html' --exclude '*.py' --exclude 'scripts/' \
+                --exclude 'README*' --exclude '.DS_Store'
+            [ -f dist/blog/index.json ] || echo "[]" > dist/blog/index.json
+            fi
 
-          # CSS is already built to dist/assets/site.css by npm run build
-          # We'll move it from dist/assets to final dist_tmp/assets
-          if [ -f dist/assets/site.css ]; then
-            cp -v dist/assets/site.css dist_tmp/assets/site.css
-          else
-            echo "ERROR: dist/assets/site.css not found. Did Tailwind build run?" >&2
-            exit 1
-          fi
+            # Projects
+            if [ -d projects ]; then
+            mkdir -p dist/projects
+            rsync -a projects/ dist/projects/ \
+                --exclude 'index.html' --exclude '*.py' --exclude 'scripts/' \
+                --exclude 'README*' --exclude '.DS_Store'
+            [ -f dist/projects/index.json ] || echo "[]" > dist/projects/index.json
+            fi
 
-          # Optional shared assets (if you have them)
-          if [ -d assets ]; then cp -rv assets/* dist_tmp/assets/ || true; fi
-          if [ -d images ]; then mkdir -p dist_tmp/images && cp -rv images/* dist_tmp/images/ || true; fi
+            # Copy your ES modules
+            if [ -d src ]; then
+            cp -rv src dist/src
+            fi
 
-          # Blog
-          if [ -d blog ]; then
-            mkdir -p dist_tmp/blog
-            rsync -a blog/ dist_tmp/blog/ \
-              --exclude 'index.html' \
-              --exclude '*.py' \
-              --exclude 'scripts/' \
-              --exclude 'README*' \
-              --exclude '.DS_Store'
-            [ -f dist_tmp/blog/index.json ] || echo "[]" > dist_tmp/blog/index.json
-          fi
-
-          # Projects
-          if [ -d projects ]; then
-            mkdir -p dist_tmp/projects
-            rsync -a projects/ dist_tmp/projects/ \
-              --exclude 'index.html' \
-              --exclude '*.py' \
-              --exclude 'scripts/' \
-              --exclude 'README*' \
-              --exclude '.DS_Store'
-            [ -f dist_tmp/projects/index.json ] || echo "[]" > dist_tmp/projects/index.json
-          fi
-
-          touch dist_tmp/.nojekyll
-
-          # Final sweep
-          find dist_tmp -name '*.py' -delete || true
-          rm -rf dist_tmp/scripts || true
-          rm -f dist_tmp/README dist_tmp/README.md || true
-
-          # Replace dist with dist_tmp
-          rm -rf dist
-          mv dist_tmp dist
+            touch dist/.nojekyll
+            find dist -name '*.py' -delete || true
+            rm -rf dist/scripts || true
+            rm -f dist/README dist/README.md || true
 
       # Publish to gh-pages
       - name: Publish to gh-pages
