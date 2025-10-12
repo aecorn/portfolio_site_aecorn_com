@@ -6,28 +6,12 @@
     name="viewport"
     content="width=device-width, initial-scale=1"
 />
-  <title>Carl F. Corneil - Homepage</title>
+  <title >Carl F. Corneil - Homepage</title>
   <meta name="description" content="Colorful minimal portfolio with projects, blog, and GitHub activity." />
   <!-- Tailwind via CDN -->
-  <link rel="icon" href="images/logo_cfc.ico" type="image/x-icon">
+  <link rel="icon" href="./images/logo_cfc.ico" type="image/x-icon">
   <link rel="stylesheet" href="assets/site.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          borderRadius: { xlr: "1.25rem", "2xlr": "1.5rem" },
-          boxShadow: { soft: "0 10px 30px -12px rgba(0,0,0,.25)" },
-          colors: {
-            ink: "#0b1021",
-            cream: "#fbfaf7",
-            candy: { 50: "#fdf2ff", 200: "#ecc4ff", 400: "#c67cff", 600: "#8a3ffc" },
-            mint: { 50: "#ecfdf5", 200: "#a7f3d0", 400: "#34d399", 600: "#059669" },
-            sun: { 50: "#fffbea", 200: "#fde68a", 400: "#f59e0b", 600: "#d97706" }
-          }
-        }
-      }
-    };
-  </script>
+  
   <style>
     html { scroll-behavior: smooth; }
     .dark .glass { background: rgba(11, 16, 33, .7); }
@@ -50,85 +34,64 @@
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-candy-50 via-cream to-mint-50 text-ink dark:from-ink dark:via-ink dark:to-ink dark:text-cream">
-  <script>
-    const SITE = {
-      yourName: "Carl F. Corneil",
-      tagline: "Programmer • Farmer • Nerd",
-      githubUser: "aecorn",
-      linkedinUrl: "https://www.linkedin.com/in/carl-corneil-4312098/",
-      farmUrl: "https://www.skogensverksted.no",
-      email: "aecorn@gmail.com",
-      blogPath: "/blog",        // expects /blog/index.json and post files inside /blog
-      projectsPath: "/projects" // expects /projects/index.json and project files inside /projects
-    };
-
-    function toBasePath(p) {
-  // If path is root-absolute or a full URL, leave it
-  if (/^([a-z]+:)?\/\//i.test(p) || p.startsWith('/')) return p;
-  // Folder containing index.html
-  const base = location.pathname.replace(/[^/]*$/, '');
-  return (base + p).replace(/\/+/g, '/');
-}
-  </script>
-
-  
-               <!-- Header -->
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-2xlr bg-gradient-to-br from-candy-400 to-mint-400">
-
-            <img src="images/1709732508184.jpeg" alt="Picture of me" class="h-9 w-9 rounded-2xlr object-cover" />
-
+  <!-- Header -->
+<div class="mx-auto max-w-6xl px-4 py-3">
+    <div class="flex flex-wrap items-center gap-3 md:gap-4 md:justify-between w-full">
+      <!-- Left: logo + name -->
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="h-9 w-9 rounded-2xlr overflow-hidden bg-gradient-to-br from-candy-400 to-mint-400 shrink-0">
+          <img src="images/1709732508184.jpeg" alt="Avatar" class="h-full w-full object-cover" />
         </div>
-        <div class="leading-tight">
-          <h1 class="font-semibold text-lg tracking-tight text-gray-600" id="site-name"></h1>
-          <p class="text-sm text-gray-600" id="site-tagline"></p>
+        <div class="leading-tight min-w-0">
+          <h1 id="site-name" class="font-semibold text-lg tracking-tight truncate">Carl F. Corneil</h1>
+          <p id="site-tagline" class="text-sm text-gray-600 truncate"></p>
         </div>
       </div>
-  
-      <nav class="flex items-center gap-4 text-sm font-medium text-gray-700">
+
+      <!-- Middle: nav -->
+      <nav class="md:flex items-center gap-4 flex-none">
         <a href="/" class="hover:text-candy-600">All</a>
         <a href="#/projects" class="hover:text-candy-600">Projects</a>
         <a href="#/activity" class="hover:text-candy-600">GitHub</a>
         <a href="#/blog" class="hover:text-candy-600">Posts</a>
         <a href="#/links" class="hover:text-candy-600">Links</a>
       </nav>
-  
-      <a id="emailLink"
-         class="px-4 py-2 rounded-xl bg-candy-400 hover:bg-candy-600 text-white font-medium shadow transition">
-        Contact
-      </a>
+
+    <!-- Right: contact button -->
+    <a id="emailLink"
+    class="order-3 md:order-none flex-none px-4 py-2 rounded-xl bg-candy-400 hover:bg-candy-600 text-white font-medium shadow transition">
+    Contact
+    </a>
     </div>
-  </header>
+  </div>
   
 
   <!-- Main sections -->
   <main class="mx-auto max-w-6xl px-4">
     <!-- Hero -->
-    <section class="pt-10 pb-4">
+    <section id="introSection" class="pt-10 pb-4">
       <div class="grid md:grid-cols-5 gap-6 items-stretch">
-        <div class="md:col-span-3 rounded-2xlr shadow-soft p-8 bg-white/70 dark:bg-ink/70 glass">
+        <div class="md:col-span-3 rounded-2xlr shadow-soft p-8 dark:bg-ink/70 glass">
           <h2 class="text-3xl font-extrabold tracking-tight">Hello! 👋</h2>
           <p class="mt-4 text-lg opacity-90">
             I build data pipelines, python packages, dabble in Docker, CI/CD, Cloud, AI etc.
             On my spare time I run a farm with my wife, we produce honey, apples and apple juice.
             I enjoy running roleplaying games for my friends and designing modules and worlds to assist this.
           </p>
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-6 flex flex-wrap gap-3 max-sm:hidden">
             <span class="px-3 py-2 rounded-xl bg-candy-200 text-ink text-sm">Python</span>
             <span class="px-3 py-2 rounded-xl bg-mint-200 text-ink text-sm">Tinkering</span>
             <span class="px-3 py-2 rounded-xl bg-sun-200 text-ink text-sm">Beverage production</span>
           </div>
         </div>
-        <div class="md:col-span-2 rounded-2xlr shadow-soft p-6 bg-gradient-to-br from-candy-400 via-mint-400 to-sun-400 text-ink">
+        <div class="max-sm:hidden md:col-span-2 rounded-2xlr shadow-soft p-6 bg-gradient-to-br from-candy-400 via-mint-400 to-sun-400 text-ink">
           <h3 class="text-xl font-bold">Now / Status</h3>
           <ul class="mt-4 space-y-2 text-sm">
             <li>🔧 Self-hosting websites on my homelab</li>
             <li>🧪 Building Python packages for the National Education database</li>
             <li>🎲 Fine-tuning a module for DnD in Foundryvtt about alcohol.</li>
           </ul>
-          <a href="#/activity" class="inline-block mt-6 px-4 py-2 rounded-xl bg-white/80 hover:bg-white font-semibold shadow">See GitHub activity ↓</a>
+          <a href="#/activity" class="inline-block mt-6 px-4 py-2 rounded-xl hover:bg-white font-semibold shadow">See GitHub activity ↓</a>
         </div>
       </div>
     </section>
@@ -154,8 +117,8 @@
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold tracking-tight">Posts</h2>
         <div class="flex gap-2">
-          <input id="searchInput" placeholder="Search posts…" class="px-3 py-2 rounded-xl bg-white/70 dark:bg-ink/70 glass outline-none w-56 text-sm" />
-          <select id="tagFilter" class="px-3 py-2 rounded-xl bg-white/70 dark:bg-ink/70 glass outline-none text-sm">
+          <input id="searchInput" placeholder="Search posts…" class="px-3 py-2 rounded-xl dark:bg-ink/70 glass outline-none w-56 text-sm" />
+          <select id="tagFilter" class="px-3 py-2 rounded-xl dark:bg-ink/70 glass outline-none text-sm">
             <option value="">All tags</option>
           </select>
         </div>
@@ -165,7 +128,7 @@
 
     <!-- Detail view -->
     <section id="detailSection" class="py-10 hidden-section">
-      <div class="rounded-2xlr shadow-soft bg-white/70 dark:bg-ink/70 glass p-6">
+      <div class="rounded-2xlr shadow-soft dark:bg-ink/70 glass p-6">
         <a id="detailBack" href="#" class="text-sm underline">← Back</a>
         <h2 id="detailTitle" class="text-2xl font-bold tracking-tight mt-2"></h2>
         <div id="detailMeta" class="text-sm opacity-70 mt-1"></div>
@@ -177,15 +140,15 @@
     <section id="linksSection" class="py-10">
       <h2 class="text-2xl font-bold tracking-tight mb-4">Links</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a id="ln-github" class="rounded-2xlr shadow-soft bg-white/70 dark:bg-ink/70 glass p-6 block hover:translate-y-[-2px] transition">
+        <a id="ln-github" class="rounded-2xlr shadow-soft dark:bg-ink/70 glass p-6 block hover:translate-y-[-2px] transition">
           <div class="text-xl">🐙 GitHub</div>
           <p class="mt-2 text-sm opacity-80">Code, experiments, and contributions.</p>
         </a>
-        <a id="ln-linkedin" class="rounded-2xlr shadow-soft bg-white/70 dark:bg-ink/70 glass p-6 block hover:translate-y-[-2px] transition">
+        <a id="ln-linkedin" class="rounded-2xlr shadow-soft dark:bg-ink/70 glass p-6 block hover:translate-y-[-2px] transition">
           <div class="text-xl">💼 LinkedIn</div>
           <p class="mt-2 text-sm opacity-80">Experience and professional profile.</p>
         </a>
-        <a id="ln-farm" class="rounded-2xlr shadow-soft bg-white/70 dark:bg-ink/70 glass p-6 block hover:translate-y-[-2px] transition">
+        <a id="ln-farm" class="rounded-2xlr shadow-soft dark:bg-ink/70 glass p-6 block hover:translate-y-[-2px] transition">
           <div class="text-xl">🍎 The Farm</div>
           <p class="mt-2 text-sm opacity-80">Apple juice & honey.</p>
         </a>
@@ -195,363 +158,12 @@
 
   <!-- Footer -->
   <footer class="mx-auto max-w-6xl px-4 py-10">
-    <div class="rounded-2xlr shadow-soft bg-white/70 dark:bg-ink/70 glass p-6 text-sm flex flex-col md:flex-row items-center justify-between">
+    <div class="rounded-2xlr shadow-soft dark:bg-ink/70 glass p-6 text-sm flex flex-col md:flex-row items-center justify-between">
       <div>© <span id="year"></span> <span id="footer-name"></span>. All rights reserved.</div>
       <div class="opacity-80">Built with Tailwind. Colorful & minimal. Rounded for happiness.</div>
     </div>
   </footer>
 
-  <script>
-    // ---------- Basic init ----------
-    const nameEl = document.getElementById('site-name');
-    const tagEl = document.getElementById('site-tagline');
-    const emailLink = document.getElementById('emailLink');
-    const ghLink = document.getElementById('githubLink');
-    const yearEl = document.getElementById('year');
-    const footerName = document.getElementById('footer-name');
-
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-
-    nameEl.textContent = SITE.yourName;
-    tagEl.textContent = SITE.tagline;
-    emailLink.href = `mailto:${SITE.email}`;
-    ghLink.href = `https://github.com/${SITE.githubUser}`;
-    ghLink.textContent = `@${SITE.githubUser}`;
-    yearEl.textContent = new Date().getFullYear();
-    footerName.textContent = SITE.yourName;
-
-    document.getElementById('ln-github').href = `https://github.com/${SITE.githubUser}`;
-    document.getElementById('ln-linkedin').href = SITE.linkedinUrl;
-    document.getElementById('ln-farm').href = SITE.farmUrl;
-
-    /*
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
-    */
-
-    // ---------- Utility ----------
-    const qs = s => document.querySelector(s);
-
-    function timeAgo(iso) {
-      const t = new Date(iso).getTime();
-      const diff = Math.max(0, Date.now() - t);
-      const mins = Math.floor(diff / 60000);
-      if (mins < 60) return `${mins}m ago`;
-      const hrs = Math.floor(mins / 60);
-      if (hrs < 24) return `${hrs}h ago`;
-      const days = Math.floor(hrs / 24);
-      return `${days}d ago`;
-    }
-
-    function escapeHtml(s='') {
-      return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    }
-
-    function prefixRelativeUrl(url, basePath) {
-      // keep absolute URLs (http, https, mailto, tel) and root-absolute (/path)
-      if (!url || /^([a-z]+:)?\/\//i.test(url) || url.startsWith('/') || url.startsWith('#')) return url;
-      return `${basePath}/${url}`.replace(/\/+/g, '/');
-    }
-
-    function rewriteImageSrcs(html, basePath) {
-      return html.replace(/(<img\\b[^>]*\\bsrc=[\"'])(.*?)([\"'][^>]*>)/gi, (_, a, src, b) => {
-        return a + prefixRelativeUrl(src, basePath) + b;
-      });
-    }
-    function stripFrontMatter(text) {
-  // remove a leading YAML front-matter block delimited by ---
-  const m = text.match(/^---\n[\s\S]*?\n---\n?/);
-  return m ? text.slice(m[0].length) : text;
-}
-    // ---------- Minimal Markdown renderer ----------
-    // --- Drop-in replacement: Minimal Markdown renderer (safe regex literals) ---
-function renderMarkdown(mdText, basePath) {
-  // code fences
-  mdText = mdText.replace(/```([\s\S]*?)```/g, (m, code) =>
-    `<pre><code>${escapeHtml(code.trim())}</code></pre>`
-  );
-
-  // inline code
-  mdText = mdText.replace(/`([^`]+)`/g, (m, c) => `<code>${escapeHtml(c)}</code>`);
-
-  // images: ![alt](src)
-  mdText = mdText.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, src) =>
-    `<img alt="${escapeHtml(alt)}" src="${escapeHtml(prefixRelativeUrl(src.trim(), basePath))}" />`
-  );
-
-  // links: [text](href)
-  mdText = mdText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, text, href) =>
-    `<a class="underline" href="${escapeHtml(prefixRelativeUrl(href.trim(), basePath))}">${escapeHtml(text)}</a>`
-  );
-
-  // headings
-  mdText = mdText
-    .replace(/^######\s+(.*)$/gm, '<h6>$1</h6>')
-    .replace(/^#####\s+(.*)$/gm, '<h5>$1</h5>')
-    .replace(/^####\s+(.*)$/gm, '<h4>$1</h4>')
-    .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
-    .replace(/^##\s+(.*)$/gm, '<h2>$1</h2>')
-    .replace(/^#\s+(.*)$/gm, '<h1>$1</h1>');
-
-  // bold / italic
-  mdText = mdText
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-  // unordered lists (- or *)
-  mdText = mdText.replace(/(^|\n)(?:-\s+|\*\s+).+(?:\n(?:-\s+|\*\s+).+)*/g, block => {
-    const items = block.trim()
-      .split(/\n(?:-\s+|\*\s+)/)
-      .map(s => s.replace(/^(?:-\s+|\*\s+)/, '').trim())
-      .filter(Boolean);
-    return `<ul class="list-disc pl-6">${items.map(li => `<li>${li}</li>`).join('')}</ul>`;
-  });
-
-  // ordered lists (1. 2. 3.)
-  mdText = mdText.replace(/(^|\n)\d+\.\s+.+(?:\n\d+\.\s+.+)*/g, block => {
-    const items = block.trim()
-      .split(/\n\d+\.\s+/)
-      .map(s => s.replace(/^\d+\.\s+/, '').trim())
-      .filter(Boolean);
-    return `<ol class="list-decimal pl-6">${items.map(li => `<li>${li}</li>`).join('')}</ol>`;
-  });
-
-  // paragraphs (simple)
-  return mdText
-    .split(/\n\s*\n/)
-    .map(p => /^<h\d|^<ul|^<ol|^<pre|^<img|^<blockquote/.test(p.trim())
-      ? p
-      : `<p>${p.trim()}</p>`)
-    .join('\n\n');
-}
-
-    // ---------- GitHub Activity ----------
-    const activityList = document.getElementById('activityList');
-    const activityHint = document.getElementById('activityHint');
-
-    async function fetchGithub() {
-      if (!SITE.githubUser) return;
-      try {
-        const res = await fetch(`https://api.github.com/users/${SITE.githubUser}/events/public`);
-        if (!res.ok) throw new Error('GitHub API error');
-        const events = await res.json();
-        const items = events
-          .filter(e => ['PushEvent','PullRequestEvent','IssuesEvent','CreateEvent','ReleaseEvent'].includes(e.type))
-          .slice(0, 6)
-          .map(e => {
-            const repo = e.repo?.name || '';
-            const when = timeAgo(e.created_at);
-            let title = '';
-            switch (e.type) {
-              case 'PushEvent':
-                title = `Pushed ${(e.payload?.commits?.length || 1)} commit(s) to <strong>${repo}</strong>`;
-                break;
-              case 'PullRequestEvent':
-                title = `${e.payload.action} PR <strong>#${e.payload.number}</strong> in <strong>${repo}</strong>`;
-                break;
-              case 'IssuesEvent':
-                title = `${e.payload.action} issue <strong>#${e.payload.issue?.number}</strong> in <strong>${repo}</strong>`;
-                break;
-              case 'CreateEvent':
-                title = `Created ${e.payload.ref_type} <strong>${e.payload.ref || repo}</strong>`;
-                break;
-              case 'ReleaseEvent':
-                title = `${e.payload.action} release <strong>${e.payload.release?.tag_name}</strong> in <strong>${repo}</strong>`;
-                break;
-            }
-            return `
-              <article class="rounded-2xlr p-5 bg-white/70 dark:bg-ink/70 glass shadow-soft">
-                <div class="text-sm opacity-70">${when}</div>
-                <div class="mt-1">${title}</div>
-                <a href="https://github.com/${repo}" class="inline-block mt-3 text-sm underline">View repo</a>
-              </article>`;
-          });
-        activityList.innerHTML = items.join('');
-        activityHint.style.display = 'none';
-      } catch {
-        activityList.innerHTML = `<div class="rounded-2xlr p-6 bg-white/70 dark:bg-ink/70 glass shadow-soft">Could not load GitHub activity.</div>`;
-      }
-    }
-    fetchGithub();
-
-    // ---------- Collections (lists) ----------
-    const projectsSection = document.getElementById('projectsSection');
-    const projectsList   = document.getElementById('projectsList');
-    const blogSection    = document.getElementById('blogSection');
-    const postList       = document.getElementById('postList');
-    const searchInput    = document.getElementById('searchInput');
-    const tagFilter      = document.getElementById('tagFilter');
-    const detailSection  = document.getElementById('detailSection');
-    const detailBack     = document.getElementById('detailBack');
-    const detailTitle    = document.getElementById('detailTitle');
-    const detailMeta     = document.getElementById('detailMeta');
-    const detailBody     = document.getElementById('detailBody');
-
-    let PROJECTS = [];
-    let POSTS = [];
-
-    async function loadIndex(basePath) {
-      try {
-        const res = await fetch(`${basePath}/index.json`, { cache: 'no-store' });
-        if (!res.ok) return [];
-        const arr = await res.json();
-        return Array.isArray(arr) ? arr : [];
-      } catch { return []; }
-    }
-
-    function show(el) { el.classList.remove('hidden-section'); }
-    function hide(el) { el.classList.add('hidden-section'); }
-
-    function renderProjects() {
-      if (!PROJECTS.length) { hide(projectsSection); return; }
-      show(projectsSection);
-      projectsList.innerHTML = PROJECTS.map(p => `
-        <article class="rounded-2xlr shadow-soft bg-white/70 dark:bg-ink/70 glass p-6">
-          <h3 class="font-semibold"><a class="underline" href="#/projects/${encodeURIComponent(p.slug)}">${escapeHtml(p.title || p.slug)}</a></h3>
-          <div class="mt-1 text-xs opacity-70">${p.date || ''}</div>
-          <p class="mt-2 text-sm opacity-90">${escapeHtml(p.summary || '')}</p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            ${(p.tags||[]).map(t => `<span class="px-2 py-1 rounded-lg bg-mint-200">${escapeHtml(t)}</span>`).join('')}
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function renderPostsList() {
-      if (!POSTS.length) { hide(blogSection); return; }
-      show(blogSection);
-      const q = (searchInput?.value || '').toLowerCase();
-      const tag = tagFilter?.value || '';
-
-      const filtered = POSTS.filter(p => {
-        const text = `${p.title||''} ${p.summary||''}`.toLowerCase();
-        const matchesQ = !q || text.includes(q);
-        const matchesTag = !tag || (p.tags||[]).includes(tag);
-        return matchesQ && matchesTag;
-      });
-
-      postList.innerHTML = filtered.map(p => `
-        <article class="rounded-2xlr p-6 bg-white/70 dark:bg-ink/70 glass shadow-soft">
-          <div class="text-sm opacity-70">${p.date ? new Date(p.date).toLocaleDateString() : ''}</div>
-          <h3 class="text-lg font-semibold mt-1"><a class="underline" href="#/blog/${encodeURIComponent(p.slug)}">${escapeHtml(p.title || p.slug)}</a></h3>
-          <div class="mt-2 flex flex-wrap gap-2 text-xs">
-            ${(p.tags||[]).map(t => `<span class="px-2 py-1 rounded-lg bg-candy-200 text-ink">${escapeHtml(t)}</span>`).join('')}
-          </div>
-          <p class="mt-3 text-sm opacity-90">${escapeHtml(p.summary || '')}</p>
-        </article>
-      `).join('');
-    }
-
-    function populateTags() {
-      const allTags = Array.from(new Set(POSTS.flatMap(p => p.tags || []))).sort();
-      tagFilter.innerHTML = `<option value="">All tags</option>` + allTags.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
-    }
-
-    // ---------- Detail view (router) ----------
-    function setBackLink(toListHash) {
-      detailBack.href = toListHash;
-    }
-
-    async function showProject(slug) {
-      const item = PROJECTS.find(p => p.slug === slug);
-      if (!item) return (location.hash = '#/projects');
-      detailTitle.textContent = item.title || item.slug;
-      detailMeta.textContent  = [item.date, ...(item.tags||[])].filter(Boolean).join(' • ');
-      setBackLink('#/projects');
-
-      try {
-        const res = await fetch(`${SITE.projectsPath}/${item.href}`, { cache: 'no-store' });
-        const html = await res.text();
-        // prefix relative image URLs to /projects
-        detailBody.innerHTML = rewriteImageSrcs(html, SITE.projectsPath);
-      } catch {
-        detailBody.innerHTML = `<p>Could not load the project file.</p>`;
-      }
-
-      hide(projectsSection); hide(blogSection); hide(activitySection); hide(linksSection);
-      show(detailSection);
-    }
-
-    async function showPost(slug) {
-      const item = POSTS.find(p => p.slug === slug);
-      if (!item) return (location.hash = '#/blog');
-      detailTitle.textContent = item.title || item.slug;
-      detailMeta.textContent  = [item.date, ...(item.tags||[])].filter(Boolean).join(' • ');
-      setBackLink('#/blog');
-
-      try {
-        const res = await fetch(`${SITE.blogPath}/${item.href}`, { cache: 'no-store' });
-        let md = await res.text();
-        md = stripFrontMatter(md);
-        const html = renderMarkdown(md, toBasePath(SITE.blogPath));
-        detailBody.innerHTML = html;
-      } catch {
-        detailBody.innerHTML = `<p>Could not load the post.</p>`;
-      }
-
-      hide(projectsSection); hide(blogSection); hide(activitySection); hide(linksSection);
-      show(detailSection);
-    }
-
-    // ---------- Simple hash router ----------
-    const activitySection = document.getElementById('activitySection');
-    const linksSection = document.getElementById('linksSection');
-
-    function route() {
-      const [_, section, slug] = (location.hash || '#/').split('/'); // ["#","blog","slug"]
-      // default view
-      hide(detailSection);
-      show(activitySection); show(linksSection);
-
-      switch (section) {
-        case 'projects':
-          hide(detailSection);
-          hide(activitySection); hide(linksSection);
-          if (slug) return showProject(decodeURIComponent(slug));
-          show(projectsSection); hide(blogSection);
-          break;
-        case 'blog':
-          hide(detailSection);
-          hide(activitySection); hide(linksSection);
-          if (slug) return showPost(decodeURIComponent(slug));
-          show(blogSection); hide(projectsSection);
-          break;
-        case 'activity':
-          show(activitySection);
-          hide(projectsSection); hide(blogSection); hide(detailSection);
-          hide(linksSection);
-          break;
-        case 'links':
-          show(linksSection);
-          hide(activitySection);
-          hide(projectsSection); hide(blogSection); hide(detailSection);
-          break;
-        default:
-          // home view: show whatever has content among sections + activity, links
-          if (PROJECTS.length) show(projectsSection); else hide(projectsSection);
-          if (POSTS.length) show(blogSection); else hide(blogSection);
-          hide(detailSection);
-      }
-    }
-    window.addEventListener('hashchange', route);
-
-    // ---------- Load data then route ----------
-    (async function init() {
-      PROJECTS = await loadIndex(SITE.projectsPath);
-      POSTS    = await loadIndex(SITE.blogPath);
-
-      renderProjects();
-      if (POSTS.length) { populateTags(); }
-      renderPostsList();
-
-      searchInput?.addEventListener('input', renderPostsList);
-      tagFilter?.addEventListener('change', renderPostsList);
-
-      route();
-    })();
-  </script>
+  <script type="module" src="src/boot.js"></script>
 </body>
 </html>
