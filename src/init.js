@@ -39,4 +39,29 @@ export async function init(SITE) {
   const state = { PROJECTS, POSTS, paths: { blog: SITE.blogPath, projects: SITE.projectsPath } };
   const router = makeRouter(state);
   router.route();
+
+// Dynamically populate Open Graph and Twitter meta tags
+function setMetaTag(name, property, content) {
+    let tag = document.querySelector(`meta[${name}="${property}"]`);
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute(name, property);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+  }
+  
+  // Set Open Graph meta tags
+  setMetaTag('property', 'og:title', `${SITE.yourName} - Homepage`);
+  setMetaTag('property', 'og:description', SITE.tagline || 'Explore my portfolio with projects, blog posts, and more!');
+  setMetaTag('property', 'og:image', SITE.imageUrl || 'https://yourwebsite.com/images/default-image.jpg');
+  setMetaTag('property', 'og:url', SITE.url || window.location.href);
+  setMetaTag('property', 'og:type', 'website');
+  
+  // Set Twitter Card meta tags
+  setMetaTag('name', 'twitter:card', 'summary_large_image');
+  setMetaTag('name', 'twitter:title', `${SITE.yourName} - Homepage`);
+  setMetaTag('name', 'twitter:description', SITE.tagline || 'Explore my portfolio with projects, blog posts, and more!');
+  setMetaTag('name', 'twitter:image', SITE.imageUrl || 'https://yourwebsite.com/images/default-image.jpg');
+
 }
