@@ -14,6 +14,7 @@ export async function init(SITE) {
   qs('#ln-github').href = `https://github.com/${SITE.githubUser}`;
   qs('#ln-linkedin').href = SITE.linkedinUrl;
   qs('#ln-farm').href = SITE.farmUrl;
+  qs('#ln-imdb').href = SITE.imdbUrl;
   qs('#year').textContent = new Date().getFullYear();
   qs('#footer-name').textContent = SITE.yourName;
 
