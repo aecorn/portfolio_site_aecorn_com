@@ -33,11 +33,11 @@ export async function renderGithubActivity(username) {
           case 'ReleaseEvent': title = `${e.payload.action} release <strong>${e.payload.release?.tag_name}</strong> in <strong>${repo}</strong>`; break;
         }
         return `
-          <article class="rounded-2xlr p-5 bg-white/70 glass shadow-soft">
-            <div class="text-sm opacity-70">${when}</div>
+          <article class="rounded-2xlr p-5 bg-white/70 glass shadow-soft pt-4 pb-6">
+          <div class="text-sm opacity-70">${when}</div>
             <div class="mt-1">${title}</div>
             <a href="https://github.com/${repo}" class="inline-block mt-3 text-sm underline">View repo</a>
-          </article>`;
+            </article>`;
       }).join('');
     activityList.innerHTML = html;
     activityHint.style.display = 'none';
