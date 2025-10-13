@@ -9,7 +9,11 @@ export function escapeHtml(s='') {
 }
 
 export function rewriteImageSrcs(html, basePathPrefix) {
-  return html.replace(/(<img\b[^>]*\bsrc=["'])(.*?)(["'][^>]*>)/gi, (_, a, src, b) =>
-    a + src.replace(/^([^/#].*)$/, `${basePathPrefix}/$1`).replace(/\/+/g,'/') + b
-  );
-}
+    return html.replace(/(<img\b[^>]*\bsrc=["'])(.*?)(["'][^>]*>)/gi, (_, a, src, b) => {
+      // Only modify relative URLs (those not starting with http://, https://, or //)
+      if (/^(https?:\/\/|\/\/)/i.test(src)) {
+        return a + src + b; // Leave absolute URLs unchanged
+      }
+      return a + src.replace(/^([^/#].*)$/, `${basePathPrefix}/$1`).replace(/\/+/g, '/') + b;
+    });
+  }
