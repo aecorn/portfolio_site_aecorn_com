@@ -61,7 +61,9 @@ function normaliseProject(slug, data, content) {
     formattedDate: formatDate(isoDate),
     featured: Boolean(data.featured),
     repository: data.repository ?? null,
+    githubRepo: data.githubRepo ?? null,
     secondaryPage: data.secondaryPage ?? null,
+    secondaryPageLabel: data.secondaryPageLabel ?? null,
     links: data.links ?? [],
     content,
   }
@@ -112,7 +114,9 @@ export function getAllProjectsMeta() {
       formattedDate: meta.formattedDate,
       featured: meta.featured,
       repository: meta.repository,
+      githubRepo: meta.githubRepo,
       secondaryPage: meta.secondaryPage,
+      secondaryPageLabel: meta.secondaryPageLabel,
       links: meta.links,
     }
   })
@@ -126,9 +130,41 @@ export async function getProjectBySlug(slug) {
   const { data, content } = matter(fileContents)
   const htmlContent = await remark().use(html).process(content)
   const meta = normaliseProject(slug, data, content)
+  let latestRelease = null
+
+  if (meta.githubRepo) {
+    try {
+      const response = await fetch(`https://api.github.com/repos/${meta.githubRepo}/releases/latest`, {
+        headers: {
+          Accept: 'application/vnd.github+json',
+          'User-Agent': 'aecorn-portfolio-site',
+        },
+      })
+
+      if (response.ok) {
+        const release = await response.json()
+        const primaryAsset =
+          Array.isArray(release.assets) && release.assets.length > 0
+            ? release.assets.find((asset) => asset.name?.toLowerCase().endsWith('.zip')) ?? release.assets[0]
+            : null
+
+        latestRelease = {
+          tagName: release.tag_name ?? null,
+          name: release.name ?? null,
+          htmlUrl: release.html_url ?? null,
+          publishedAt: release.published_at ?? release.created_at ?? null,
+          assetName: primaryAsset?.name ?? null,
+          downloadUrl: primaryAsset?.browser_download_url ?? null,
+        }
+      }
+    } catch (error) {
+      console.warn(`Failed to fetch latest release for ${meta.githubRepo}:`, error)
+    }
+  }
 
   return {
     ...meta,
     contentHtml: htmlContent.toString(),
+    latestRelease,
   }
 }
