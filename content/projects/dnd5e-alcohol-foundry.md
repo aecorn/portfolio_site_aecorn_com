@@ -9,7 +9,9 @@ tags:
   - game-systems
 image: /images/inebriation_bar.png
 repository: https://github.com/aecorn/dnd5e-alcohol/tree/main
+githubRepo: aecorn/dnd5e-alcohol
 secondaryPage: https://foundryvtt.com/packages/dnd5e-alcohol/
+secondaryPageLabel: FoundryVTT Module Page
 featured: true
 ---
 
@@ -21,5 +23,5 @@ Working on this project was my first foray into a larger JavaScript ecosystem…
 The module is based on a great, free [ruleset by CupidFaust on GMBinder](https://www.gmbinder.com/share/-M0rTarrzYJgR5jiH0j6)
 that I converted with their blessing.
 
-This badge shows how many times the latest release has been downloaded:
+This badge shows how many times the latest release has been downloaded (resets on a new release):
 ![Download badge fof DnD5e Alcohol module in FoundryVTT](https://img.shields.io/github/downloads/aecorn/dnd5e-alcohol/latest/module.zip)
