@@ -6,7 +6,7 @@ export default function Timeline({ items, title }) {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 0.9', 'end 0.2'],
+    offset: ['start 0.9', 'end 0.9'],
   })
   const lineProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 18 })
 
