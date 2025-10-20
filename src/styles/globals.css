@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased transition-colors duration-300 ease-in-out dark:bg-slate-950 dark:text-slate-100;
+  font-family: var(--font-mont), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+.site-container {
+  @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.skip-link {
+  @apply absolute left-1/2 top-4 -translate-x-1/2 -translate-y-full transform rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition focus:translate-y-0 focus:outline-none dark:bg-white dark:text-slate-900;
+}
