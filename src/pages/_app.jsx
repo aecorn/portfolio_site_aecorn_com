@@ -18,9 +18,6 @@ export default function App({ Component, pageProps }) {
       <div
         className={`${montserrat.variable} font-montserrat flex min-h-screen flex-col bg-white transition-colors duration-300 dark:bg-slate-950`}
       >
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
         <Navbar />
         <PageTransition>
           <main id="main-content" className="site-container flex-1 py-12 sm:py-16">

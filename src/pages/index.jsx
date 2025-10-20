@@ -26,7 +26,7 @@ export default function Home() {
 
       <section className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <motion.div
-          className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-xl shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900/60"
+          className="flex justify-center"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -34,10 +34,11 @@ export default function Home() {
           <Image
             src="/images/hero_image.png"
             alt="Carl F. Corneil having a drink"
-            fill
+            width={1024}
+            height={1024}
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
+            className="h-auto w-full max-w-xl rounded-3xl object-contain"
           />
         </motion.div>
 
