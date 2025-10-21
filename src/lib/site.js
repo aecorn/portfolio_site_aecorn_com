@@ -50,7 +50,9 @@ export const socialLinks = [
   },
 ]
 
-const githubSearchUrl = (query) => `https://github.com/search?q=${encodeURIComponent(query)}&type=pullrequests`
+const githubSearchUrlPrs = (query) => `https://github.com/search?q=${encodeURIComponent(query)}&type=pullrequests`
+const githubSearchUrlIssues = (query) => `https://github.com/search?q=${encodeURIComponent(query)}&type=issues`
+
 
 export const metrics = [
   {
@@ -63,17 +65,13 @@ export const metrics = [
     id: 'github-org-contributions',
     label: 'Merged PRs at Statistics Norway on Public Repos',
     suffix: '',
-    href: githubSearchUrl(`author:${SITE.githubUser} org:statisticsnorway is:pr is:merged`),
+    href: githubSearchUrlPrs(`author:${SITE.githubUser} org:statisticsnorway is:pr is:merged`),
   },
   {
     id: 'github-community-contributions',
     label: 'Solved issues on repoes owned by me',
     suffix: '',
-    href: `https://github.com/search?q=${encodeURIComponent(
-      `owner
-      
-      :${SITE.githubUser} -org:statisticsnorway is:issue is:closed`
-    )}&type=issues`,
+    href: githubSearchUrlIssues(`owner:${SITE.githubUser} -org:statisticsnorway is:issue is:closed`),
   },
 ] 
 
