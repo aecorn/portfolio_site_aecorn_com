@@ -1,0 +1,20 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5f5" />
+      <stop offset="100%" stop-color="#f5f5ff" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#grad)" />
+  <circle cx="420" cy="310" r="140" fill="#1f2937" opacity="0.9" />
+  <rect x="180" y="410" width="440" height="320" rx="220" fill="#1f2937" opacity="0.85" />
+  <rect x="220" y="640" width="360" height="220" rx="120" fill="#1f2937" opacity="0.82" />
+  <path d="M140 250C220 120 460 140 560 220C660 300 710 580 640 720C570 860 350 880 220 760C120 670 80 380 140 250Z" fill="url(#accent)" opacity="0.18" />
+  <text x="50%" y="92%" dominant-baseline="middle" text-anchor="middle" font-family="Montserrat, Arial" font-size="42" fill="#334155" opacity="0.7">
+    Creative technologist
+  </text>
+</svg>

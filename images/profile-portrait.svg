@@ -1,0 +1,15 @@
+<svg width="480" height="640" viewBox="0 0 480 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="profile-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3f4ff" />
+      <stop offset="100%" stop-color="#e0f2fe" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="640" rx="48" fill="url(#profile-bg)" />
+  <circle cx="240" cy="210" r="110" fill="#1f2937" opacity="0.92" />
+  <rect x="140" y="300" width="200" height="180" rx="100" fill="#1f2937" opacity="0.88" />
+  <rect x="120" y="340" width="240" height="220" rx="120" fill="#1f2937" opacity="0.85" />
+  <text x="50%" y="82%" dominant-baseline="middle" text-anchor="middle" font-family="Montserrat, Arial" font-size="28" fill="#334155" opacity="0.7">
+    Carl • CB Studio
+  </text>
+</svg>
