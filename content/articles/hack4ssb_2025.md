@@ -25,10 +25,10 @@ I got to team up with a bunch of friendly dudes from other departments, some of 
 ![The search with distance](/articles/hack4ssb_2025/ssb_vektor_distance.jpeg)
 
 ## The Techstack
-- Own code and Docling for data-collection , -filtering and -unification (https://github.com/docling-project/docling) 
-- NB-SBERT-BASE from the AI-lab at the Nasjonalbiblioteket | The National Library of Norway used for doing the vectorization (https://www.linkedin.com/company/nasjonalbiblioteket-the-national-library-of-norway/)
-- The extension sqlite_vec and sqlite to create a .db file. (https://github.com/asg017/sqlite-vec)
-- FastAPI + FastAPI-MCP to host the API that distributes the database's content (https://github.com/tadata-org/fastapi_mcp)
+- Own code and Docling for data-collection , -filtering and -unification [Docling Github](https://github.com/docling-project/docling) 
+- NB-SBERT-BASE from the AI-lab at the Nasjonalbiblioteket | The National Library of Norway used for doing the vectorization [Linkedin page of National Library](https://www.linkedin.com/company/nasjonalbiblioteket-the-national-library-of-norway/)
+- The extension sqlite_vec and sqlite to create a .db file. [Sqlite Vec Github](https://github.com/asg017/sqlite-vec)
+- FastAPI + FastAPI-MCP to host the API that distributes the database's content [FastAPI MCP Github](https://github.com/tadata-org/fastapi_mcp)
 - A demo website for search, copying the design of ssb.no, turned into a jinja-template also hosted by another fastapi-instance.
 - We demoed the MCP using Claude locally on the desktop (we generated an http-stdio bridge using AI, so that Claude works even without a subscription).
 
@@ -40,4 +40,4 @@ I got to team up with a bunch of friendly dudes from other departments, some of 
 ![Talking to the MCP with Claude locally](/articles/hack4ssb_2025/claude_ssb_tool.jpeg)
 
 
-[Linkedin Post](https://www.linkedin.com/posts/carl-corneil-4312098_this-years-hack4ssb-was-a-blast-activity-7375777931467505664-c4O-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAF0VyUBdrGG8-FuXJm0WAX4jPU4gHEdks0)
+[Linkedin Post mirroring content here](https://www.linkedin.com/posts/carl-corneil-4312098_this-years-hack4ssb-was-a-blast-activity-7375777931467505664-c4O-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAF0VyUBdrGG8-FuXJm0WAX4jPU4gHEdks0)

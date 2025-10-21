@@ -59,7 +59,7 @@ export default function Home() {
             animate="visible"
             custom={2}
           >
-            {hero.headline}
+            {SITE.yourName} - {hero.headline}
           </motion.h1>
           <motion.p
             className="max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-300"
