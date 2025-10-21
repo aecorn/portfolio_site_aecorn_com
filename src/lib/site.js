@@ -61,19 +61,21 @@ export const metrics = [
   },
   {
     id: 'github-org-contributions',
-    label: 'Merged PRs at Statistics Norway',
+    label: 'Merged PRs at Statistics Norway on Public Repos',
     suffix: '',
     href: githubSearchUrl(`author:${SITE.githubUser} org:statisticsnorway is:pr is:merged`),
   },
   {
     id: 'github-community-contributions',
-    label: 'Solved issues in the community',
+    label: 'Solved issues on repoes owned by me',
     suffix: '',
     href: `https://github.com/search?q=${encodeURIComponent(
-      `author:${SITE.githubUser} -org:statisticsnorway is:issue is:closed`
+      `owner
+      
+      :${SITE.githubUser} -org:statisticsnorway is:issue is:closed`
     )}&type=issues`,
   },
-]
+] 
 
 export const experience = [
   {

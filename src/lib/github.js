@@ -35,9 +35,9 @@ export async function getGithubContributionCounts(username, organisation) {
     return { total: null, organisation: null, communityIssues: null }
   }
 
-  const totalQuery = `author:${username} is:pr is:merged`
+  const totalQuery = `owner:${username} is:pr is:merged`
   const orgQuery = organisation ? `author:${username} org:${organisation} is:pr is:merged` : null
-  const communityIssuesQuery = `author:${username} -org:${organisation} is:issue is:closed`
+  const communityIssuesQuery = `owner:${username} -org:${organisation} is:issue is:closed`
 
   const [total, organisationTotal, communityIssues] = await Promise.all([
     fetchGithubCount(totalQuery),
