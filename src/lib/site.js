@@ -95,7 +95,7 @@ export const experience = [
     company: 'Independant contractor',
     period: '2010 — 2015',
     description:
-      'Shipped interactive experiences across film, TV, and games with an emphasis on resilient infrastructure and storytelling.',
+      '"On my spare time" - Designed and developed custom WordPress themes and plugins for small businesses, enhancing their online presence and functionality. Companies like Eggen Arkitekter, Ølakademiet, Qvisten etc.',
   },
 ]
 
