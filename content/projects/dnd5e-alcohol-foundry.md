@@ -12,7 +12,7 @@ repository: https://github.com/aecorn/dnd5e-alcohol/tree/main
 githubRepo: aecorn/dnd5e-alcohol
 secondaryPage: https://foundryvtt.com/packages/dnd5e-alcohol/
 secondaryPageLabel: FoundryVTT Module Page
-featured: true
+featured: false
 ---
 
 DnD5e Alcohol is a module for the TTRPG software FoundryVTT that adds alcoholic beverages to the game.
